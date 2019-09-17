@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Tutorial</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            div {
+                margin-top:10px;
+            }
+        </style>
+
+        <link rel="stylesheet" href="page.css">
+
+    </head>
+    <body>
+        <h1>HTML5/ JS Audio Player Tutorial</h1>
+        <h2>by Eric Gurevich</h2>
+
+        <a  target="_blank" href="download/demo.html">Click here for a demo and usage instructions</a>
+        <br>
+        <a  target="_blank" href="download/fw.js">Click here for the JS file</a>
+
+        <div>Tutorial</div>
+
+        <div id="tut">
+            <table>
+                <tr>
+                    <td>
+                        <h3>Functional Requirements:</h3>
+
+                        <p>
+                            When you use the "load()" function with given parameters, an 
+                            audio player will be generated in your HTML page. This player
+                            supports any audio file format. You can provide album art, artist
+                            and track name. The player can play the song, pause, seek using
+                            a playhead, and will show the current and total time. 
+                        </p>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <p>
+                            1. Load HTML and CSS of audio player into "content" div
+                            using a getElementbyID(content).innerHTML = ... . The 
+                            HTML consists of the main player, a title section, 
+                            a time section, an album art image, a timeline, an indicator, 
+                            a play button, and a place for the track name and artist name.
+                        </p>
+                    </td>
+
+                    <td>
+                        <div class="jsfiddle">
+                            <script async src="//jsfiddle.net/ericgurevich/a3vgy9sr/14/embed/js,html,css,result/dark/"></script>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <p>
+                            2. Set global vars myaudio, playhead, and duration. Myaudio
+                            refers to the the HTML5 &lt;audio&gt; element. Notice that
+                            in the htmlcontent var, the &lt;audio&gt; element does not 
+                            have the controls attribute, which means the browser's 
+                            built in audio player is hidden. The myaudio.src attribute
+                            is set to the audio file url. The current time is set to 0, 
+                            album art is set, track name/artist are set, and button
+                            is set to play. Then we call onLoaded() which does...
+                        </p>
+                    </td>
+
+                    <td>
+                        <div class="jsfiddle">
+                            <script async src="//jsfiddle.net/ericgurevich/2qdzntpx/6/embed/js,html,css,result/dark/"></script>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <p>
+                            3. In onLoaded(), several event listeners are added to the audio element.
+                            These include duration listeners, time update, playhead drag, and song ends.
+                            The timeupdate function moves the playhead using the margin-
+                            left css attribute as the time of the song changes. The drag 
+                            event listener relies on the draggable HTML5 attribute, which lets you
+                            drag the playhead. However, this is kind of ugly because it is not
+                            locked to the x axis and creates a "ghosting" effect. This can be 
+                            fixed with more complicated JS or Jquery but was chosen to be simple
+                            for simple JS demonstration. <br> The playPause() function is called 
+                            by an onClick for the play button. 
+
+                        </p>
+                    </td>
+
+                    <td>
+                        <div class="jsfiddle">
+                            <script async src="//jsfiddle.net/ericgurevich/uzcakn0g/1/embed/js,html,css,result/dark/"></script>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <p>
+                            4. These last three functions are used by other functions for some
+                            JS and HTML utility. The convertTime() function converts time
+                            from a float to a string in HH:MM:SS format. The offset() function
+                            finds the position of the playhead relative to the window (in case
+                            your window is resized). The seekTime() function recieves an event
+                            (in this case the time being updated by the user through a click
+                            on the timeline) and manually moves the 
+                            playhead to the appropriate position by getting the mouse position,
+                            dividing by the timeline width, and multiplying by the total
+                            length of the song. <br><br> And that's it!
+                            <br> *note* The JSFiddle version does not actually play music 
+                            so use the <a target="_blank" href="download/demo.html">
+                                demo</a> link to see the player in action *note*
+
+                        </p>
+                    </td>
+
+                    <td>
+                        <div class="jsfiddle">
+                            <script async src="//jsfiddle.net/ericgurevich/3z4ut8fh/3/embed/js,html,css,result/dark/"></script>                       
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <table style="margin:auto">
+            <tr>
+                    <td>
+                        <h3>References:</h3>
+                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio">
+                        https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
+                        </a>
+                        <br>
+                        This web doc page describes properties and methods for the HTML5 
+                        &lt;audio&gt; element. Note that this interface inherits from
+                        HTMLMediaElement. 
+                        <br>
+                        <a href="http://klare.io/building-a-music-player.html">
+                        http://klare.io/building-a-music-player.html
+                        </a>
+                        <br>
+                        <a href="https://webdesign.tutsplus.com/tutorials/create-a-customized-html5-audio-player--webdesign-7081">
+                        https://webdesign.tutsplus.com/tutorials/create-a-customized-html5-audio-player--webdesign-7081
+                        </a>
+                        <br>
+                        <a href="https://www.htmlgoodies.com/html5/javascript/build-an-html5-audio-player.html">
+                        https://www.htmlgoodies.com/html5/javascript/build-an-html5-audio-player.html
+                        </a>
+                        <br>
+                        These links provided various instructions and inspiration for
+                        building my audio player.       
+
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

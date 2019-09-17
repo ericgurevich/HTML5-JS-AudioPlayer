@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Eric Gurevich Audio Player Demo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            div {
+                margin-top:10px;
+            }
+        </style>
+
+        <link rel="stylesheet" href="style/playerStyle.css">
+
+
+    </head>
+    <body style="background-color:#def3d7;font-family:sans-serif">
+        <h1>Audio Player Demo</h1>
+        <h2>Eric Gurevich</h2>
+
+        <h3>Instructions: include fw.js in your script src. To load an audio player into a "content" div,
+            call load(source, art, artist, track, content).</h3>
+        
+            <ul>
+                <li>source: file url of audio file</li>
+                <li>art: file url of album art image </li>
+                <li>artist: artist name</li>
+                <li>track: track name</li>
+                <li>content: div where you want the player to load</li>
+            </ul>
+        
+        <table>
+            
+            <tr>
+                <td><button id="loadbutton1" 
+                    onclick="load('audio/Autumn Leaves.mp3',
+                                'https://upload.wikimedia.org/wikipedia/en/8/82/Bill_Evans_Trio_Portraits_in_Jazz.jpg',
+                                'Bill Evans',
+                                'Autumn Leaves', 'content')">
+                Load Player with Song: Bill Evans - Autumn Leaves</button></td>
+                
+                <td><pre style="background-color: lightcyan">
+load('audio/Autumn Leaves.mp3',
+'https://upload.wikimedia.org/wikipedia/en/8/82/Bill_Evans_Trio_Portraits_in_Jazz.jpg',
+'Bill Evans',
+'Autumn Leaves', 
+'content')
+                    </pre></td>
+            </tr>
+            
+            <tr>
+                <td><button id="loadbutton2" 
+                    onclick="load('audio/19 Through The Wire.mp3',
+                                'https://upload.wikimedia.org/wikipedia/en/a/a3/Kanyewest_collegedropout.jpg',
+                                'Kanye West',
+                                'Through The Wire', 'content')">
+                Load Player with Song: Kanye West - Through The Wire</button></td>
+                
+                <td><pre style="background-color: lightcyan">
+load('audio/19 Through The Wire.mp3',
+'https://upload.wikimedia.org/wikipedia/en/a/a3/Kanyewest_collegedropout.jpg',
+'Kanye West',
+'Through The Wire', 
+'content')
+                    </pre></td>
+                
+            </tr>
+        </table>
+       
+        
+        
+        
+        <p>↓ This is my "content" div ↓</p>
+        <div id ="content"></div>
+        
+
+        <script src="fw.js"></script>
+    </body>
+</html>
